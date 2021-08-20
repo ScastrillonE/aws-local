@@ -1,0 +1,7 @@
+SERVICES=lambda,s3,sqs,sns,iam,ec2,apigateway,cloudWatchlogs,dynamodb,cloudformation,cognito
+DEBUG=1
+DATA_DIR=/tmp/localstack/data
+LAMBDA_EXECUTOR=local
+PORT_WEB_UI=9000
+START_WEB=1
+DEFAULT_REGION=eu-west-1

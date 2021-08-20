@@ -1,0 +1,25 @@
+version: '3.7'
+services:
+  localstack:
+    image: localstack/localstack
+    ports:
+      - "4563-4599:4563-4599"
+      - "${PORT_WEB_UI-9000}:${PORT_WEB_UI-9000}"
+    environment:
+      - SERVICES=${SERVICES} 
+      - DEFAULT_REGION=${DEFAULT_REGION}
+      - DEBUG=${DEBUG}
+      - DATA_DIR=${DATA_DIR}
+      - PORT_WEB_UI=${PORT_WEB_UI-9000}
+      - START_WEB=${START_WEB}
+      - LAMBDA_EXECUTOR=${LAMBDA_EXECUTOR}
+      - DOCKER_HOST=unix:///var/run/docker.sock
+    volumes:
+      - type: volume
+        source: mydata
+        target: ${DATA_DIR}
+
+      - "/var/run/docker.sock:/var/run/docker.sock"
+volumes:
+  mydata:
+    name: localstack-data
